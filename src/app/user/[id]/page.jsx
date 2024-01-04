@@ -144,7 +144,6 @@ const User = () => {
   const location = usePathname();
   const userId = parseInt(location.split("/").pop(), 10);
 
-  console.log(userId);
   const [selectedUser, setSelectedUser] = useState(
     users.find((user) => user.id === userId)
   );
