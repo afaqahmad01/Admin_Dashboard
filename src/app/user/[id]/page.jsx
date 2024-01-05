@@ -144,7 +144,6 @@ const User = () => {
   const location = usePathname();
   const userId = parseInt(location.split("/").pop(), 10);
 
-  console.log(userId);
   const [selectedUser, setSelectedUser] = useState(
     users.find((user) => user.id === userId)
   );
@@ -245,7 +244,7 @@ const User = () => {
 
   return (
     <Layout>
-      <div className="flex h-screen bg-gray-100">
+      <div className="flex h-[90vh]  bg-gray-100">
         <main className="flex-1 ">
           <div className="p-6">
             <h1 className="text-2xl font-bold mb-4">User Details</h1>
@@ -306,7 +305,7 @@ const User = () => {
             </div>
 
             {/* User Posts */}
-            <div className="bg-white p-6 rounded-lg shadow-md overflow-y-auto max-h-96">
+            <div className="bg-white p-4 rounded-lg shadow-md overflow-y-auto max-h-[245px]">
               <h2 className="text-xl font-bold mb-4">User Posts</h2>
               <table className="min-w-full bg-white border border-gray-300">
                 <thead>

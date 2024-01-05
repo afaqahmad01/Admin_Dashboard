@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     <>
       <SideNav />
 
-      <div className="md:ml-[200px] md:mt-[65px] mt-[58px] ml-0">
+      <div className="md:ml-[200px] md:mt-[65px] mt-[58px] ml-0 bg-gray-100">
         {children}
       </div>
     </>
