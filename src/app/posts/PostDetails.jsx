@@ -271,7 +271,7 @@ const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  className="bg-[#7b1fa2] fixed mt-12"
+                  className="bg-[#7b1fa2] fixed !mt-12"
                   onClick={() => handleRemovePost(selectedPost.id)}
                 >
                   Remove Post
