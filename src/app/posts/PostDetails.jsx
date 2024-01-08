@@ -263,7 +263,7 @@ const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
                       <Button
                         variant="outlined"
                         color="primary"
-                        className=""
+                        className="fixed"
                         onClick={handleClickNextVideo}
                       >
                         Next Video
