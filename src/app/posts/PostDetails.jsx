@@ -246,6 +246,20 @@ const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
               </div>
 
               <div className="ml-[23rem]">
+                <span className="absolute right-10 ">
+                  <Tooltip
+                    title={`Reminder added on ${selectedPost.date}`}
+                    arrow
+                  >
+                    <span
+                      className="cursor-pointer hover:underline mt-10"
+                      style={{ fontSize: "24px" }}
+                    >
+                      <IoIosAlarm />
+                    </span>
+                  </Tooltip>
+                </span>
+
                 <div className="mb-4 fixed">
                   {selectedPost.postType === "Image" &&
                     selectedPost.postLink.length > 1 && (
@@ -268,28 +282,17 @@ const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
                       </Button>
                     )}
                 </div>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className="bg-[#7b1fa2] fixed !mt-12"
-                  onClick={() => handleRemovePost(selectedPost.id)}
-                >
-                  Remove Post
-                </Button>
-                <span className="flex justify-end ml-36 mt-12 fixed">
-                  <Tooltip
-                    title={`Reminder added on ${selectedPost.date}`}
-                    arrow
+                <div className="fixed !mt-12">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className="bg-[#7b1fa2]"
+                    onClick={() => handleRemovePost(selectedPost.id)}
                   >
-                    <span
-                      className="cursor-pointer hover:underline mt-10"
-                      style={{ fontSize: "24px" }}
-                    >
-                      <IoIosAlarm />
-                    </span>
-                  </Tooltip>
-                </span>
-                <div className="mt-28">
+                    Remove Post
+                  </Button>
+                </div>
+                <div className="mt-24">
                   <p className="fixed">{selectedPost.content}</p>
                   <p className="fixed mt-8">
                     <strong>Likes:</strong> {selectedPost.likes}
