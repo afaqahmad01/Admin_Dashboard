@@ -10,8 +10,9 @@ import {
   Button,
   Tooltip,
 } from "@mui/material";
+import Link from "next/link";
 
-const PostDetails = ({ style, tableStyle }) => {
+const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
   const adminPosts = [
     {
       id: 1,
@@ -22,7 +23,11 @@ const PostDetails = ({ style, tableStyle }) => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
       ],
       postType: "Image",
-      comments: ["awesome", "cool", "heavy"],
+      comments: [
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Nabeel", date: "17 December 2023", comment: "cool" },
+        { userName: "Shahbaz", date: "1 week before", comment: "heavy" },
+      ],
       postTag: "Motivational",
       date: ["9:30 a.m.", "5:30 p.m."],
     },
@@ -38,7 +43,23 @@ const PostDetails = ({ style, tableStyle }) => {
       ],
       postType: "Image",
       postTag: "Happy",
-      comments: ["awesome", "cool", "heavy", "good", "excellent"],
+      comments: [
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Arqum", date: "10:00 a.m", comment: "good" },
+        { userName: "Faisal", date: "10:00 a.m", comment: "excellent" },
+        { userName: "Nabeel", date: "17 December 2023", comment: "cool" },
+        { userName: "Shahbaz", date: "1 week before", comment: "heavy" },
+      ],
       date: ["8:00 a.m", "5:30 p.m"],
     },
     {
@@ -52,183 +73,20 @@ const PostDetails = ({ style, tableStyle }) => {
       ],
       postType: "Video",
       postTag: "Inspirational",
-      comments: ["awesome", "cool", "heavy"],
-      date: Date(),
-    },
-    {
-      id: 1,
-      title: "Post 1",
-      content: "Content for Post 1",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
+      comments: [
+        { userName: "Afaq", date: "10:00 a.m", comment: "awesome" },
+        { userName: "Nabeel", date: "17 December 2023", comment: "cool" },
+        { userName: "Shahbaz", date: "1 week before", comment: "heavy" },
       ],
-      postType: "Image",
-      comments: ["awesome", "cool", "heavy"],
-      postTag: "Motivational",
-      date: ["9:30 a.m.", "5:30 p.m."],
-    },
-    {
-      id: 2,
-      title: "Post 6",
-      content: "Content for Post 6",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2X_u9Ca0-KMZ9JqYZp6lYd5cCvli0b8h1LnjhQyXRGfCn_cCL1GeZlq34a3ulITrfrM&usqp=CAU",
-        "https://i.pinimg.com/736x/b9/92/53/b9925374893c2528579291644dc17313.jpg",
-      ],
-      postType: "Image",
-      postTag: "Happy",
-      comments: ["awesome", "cool", "heavy", "good", "excellent"],
-      date: ["8:00 a.m", "5:30 p.m"],
-    },
-    {
-      id: 3,
-      title: "Post 7",
-      content: "Content for Post 7",
-      likes: 20,
-      postLink: [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      ],
-      postType: "Video",
-      postTag: "Inspirational",
-      comments: ["awesome", "cool", "heavy"],
-      date: Date(),
-    },
-    {
-      id: 1,
-      title: "Post 1",
-      content: "Content for Post 1",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-      ],
-      postType: "Image",
-      comments: ["awesome", "cool", "heavy"],
-      postTag: "Motivational",
-      date: ["9:30 a.m.", "5:30 p.m."],
-    },
-    {
-      id: 2,
-      title: "Post 6",
-      content: "Content for Post 6",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2X_u9Ca0-KMZ9JqYZp6lYd5cCvli0b8h1LnjhQyXRGfCn_cCL1GeZlq34a3ulITrfrM&usqp=CAU",
-        "https://i.pinimg.com/736x/b9/92/53/b9925374893c2528579291644dc17313.jpg",
-      ],
-      postType: "Image",
-      postTag: "Happy",
-      comments: ["awesome", "cool", "heavy", "good", "excellent"],
-      date: ["8:00 a.m", "5:30 p.m"],
-    },
-    {
-      id: 3,
-      title: "Post 7",
-      content: "Content for Post 7",
-      likes: 20,
-      postLink: [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      ],
-      postType: "Video",
-      postTag: "Inspirational",
-      comments: ["awesome", "cool", "heavy"],
-      date: Date(),
-    },
-    {
-      id: 1,
-      title: "Post 1",
-      content: "Content for Post 1",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-      ],
-      postType: "Image",
-      comments: ["awesome", "cool", "heavy"],
-      postTag: "Motivational",
-      date: ["9:30 a.m.", "5:30 p.m."],
-    },
-    {
-      id: 2,
-      title: "Post 6",
-      content: "Content for Post 6",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2X_u9Ca0-KMZ9JqYZp6lYd5cCvli0b8h1LnjhQyXRGfCn_cCL1GeZlq34a3ulITrfrM&usqp=CAU",
-        "https://i.pinimg.com/736x/b9/92/53/b9925374893c2528579291644dc17313.jpg",
-      ],
-      postType: "Image",
-      postTag: "Happy",
-      comments: ["awesome", "cool", "heavy", "good", "excellent"],
-      date: ["8:00 a.m", "5:30 p.m"],
-    },
-    {
-      id: 3,
-      title: "Post 7",
-      content: "Content for Post 7",
-      likes: 20,
-      postLink: [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      ],
-      postType: "Video",
-      postTag: "Inspirational",
-      comments: ["awesome", "cool", "heavy"],
-      date: Date(),
-    },
-    {
-      id: 1,
-      title: "Post 1",
-      content: "Content for Post 1",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-      ],
-      postType: "Image",
-      comments: ["awesome", "cool", "heavy"],
-      postTag: "Motivational",
-      date: ["9:30 a.m.", "5:30 p.m."],
-    },
-    {
-      id: 2,
-      title: "Post 6",
-      content: "Content for Post 6",
-      likes: 20,
-      postLink: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzd-mchfk8QwVmNE4zW9gMRYoeXPyPi31Hbw&usqp=CAU",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2X_u9Ca0-KMZ9JqYZp6lYd5cCvli0b8h1LnjhQyXRGfCn_cCL1GeZlq34a3ulITrfrM&usqp=CAU",
-        "https://i.pinimg.com/736x/b9/92/53/b9925374893c2528579291644dc17313.jpg",
-      ],
-      postType: "Image",
-      postTag: "Happy",
-      comments: ["awesome", "cool", "heavy", "good", "excellent"],
-      date: ["8:00 a.m", "5:30 p.m"],
-    },
-    {
-      id: 3,
-      title: "Post 7",
-      content: "Content for Post 7",
-      likes: 20,
-      postLink: [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      ],
-      postType: "Video",
-      postTag: "Inspirational",
-      comments: ["awesome", "cool", "heavy"],
       date: Date(),
     },
   ];
   const [selectedPost, setSelectedPost] = useState(null);
   const [open, setOpen] = useState(false);
-
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [updatedAdminPosts, setUpdatedAdminPosts] = useState(adminPosts);
+  const [showAddButton, setShowAddButton] = useState(true);
 
   const handleClickNextPhoto = () => {
     setCurrentPhotoIndex(
@@ -240,7 +98,6 @@ const PostDetails = ({ style, tableStyle }) => {
 
   useEffect(() => {
     if (videoRef.current) {
-      // Pause the video when the component unmounts or a new video is loaded
       return () => {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
@@ -259,7 +116,21 @@ const PostDetails = ({ style, tableStyle }) => {
     );
   };
 
-  const [updatedAdminPosts, setUpdatedAdminPosts] = useState(adminPosts);
+  const handleAddImage = () => {
+    const newPost = {
+      id: updatedAdminPosts.length + 1,
+      title: `New Post ${updatedAdminPosts.length + 1}`,
+      content: "Content for the new post",
+      likes: 0,
+      postLink: imageURLs,
+      postType: "Image",
+      postTag: "New Tag",
+      comments: [],
+      date: Date(),
+    };
+
+    setUpdatedAdminPosts([...updatedAdminPosts, newPost]);
+  };
 
   const handleClickOpen = (post) => {
     setSelectedPost(post);
@@ -275,12 +146,26 @@ const PostDetails = ({ style, tableStyle }) => {
     setSelectedPost(null);
     setOpen(false);
   };
+
   const handleClose = () => {
     setSelectedPost(null);
     setOpen(false);
   };
+
   return (
     <>
+      {/* <div className=" mt-5 absolute right-48 top-20">
+        {showAddButton && (
+          <Button
+            variant="contained"
+            color="primary"
+            className="bg-[#1565C0] mt-2 p-3"
+            onClick={handleAddImage}
+          >
+            Add Images to Admin Posts
+          </Button>
+        )}
+      </div> */}
       <h2 className={`text-2xl font-bold  ${style}`}>Admin Posts</h2>
       <div className="bg-white p-6 w-[90vw] lg:w-[80vw] md:w-[70vw]  mx-auto rounded-lg shadow-md overflow-y-auto max-h-96 no-scrollbar">
         <div className={`overflow-y-auto ${tableStyle} `}>
@@ -321,19 +206,25 @@ const PostDetails = ({ style, tableStyle }) => {
         </div>
       </div>
       {/* Post Pop-up Dialog */}
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        fullWidth
+        maxWidth="sm"
+        className="!overflow-hidden"
+      >
         <DialogTitle id="responsive-dialog-title">Post Details</DialogTitle>
         <DialogContent>
           {selectedPost && (
             <div className="flex">
-              <div className="w-96 overflow-x-auto flex-none whitespace-nowrap">
+              <div className="flex-none block overflow-hidden whitespace-nowrap">
                 {selectedPost.postType === "Image" &&
                   selectedPost.postLink.map((image, index) => (
                     <img
                       key={index}
                       src={image}
                       alt={`Post ${index + 1}`}
-                      className={`mb-4 w-96 h-[600px] border border-black inline-block ${
+                      className={`mb-4 w-[25vw] !h-[370px] border fixed  border-black inline-block ${
                         index === currentPhotoIndex ? "" : "hidden"
                       }`}
                     />
@@ -346,7 +237,7 @@ const PostDetails = ({ style, tableStyle }) => {
                       ref={videoRef}
                       src={video}
                       alt={`Post ${index1 + 1}`}
-                      className={`mb-4 w-96 h-[600px] border border-black inline-block ${
+                      className={`mb-4 w-[25vw] !h-[370px] fixed inline-block ${
                         index1 === currentVideoIndex ? "" : "hidden"
                       }`}
                       controls
@@ -354,14 +245,14 @@ const PostDetails = ({ style, tableStyle }) => {
                   ))}
               </div>
 
-              <div className="ml-5">
-                <div className="mb-4">
+              <div className="ml-[23rem]">
+                <div className="mb-4 fixed">
                   {selectedPost.postType === "Image" &&
                     selectedPost.postLink.length > 1 && (
                       <Button
                         variant="outlined"
                         color="primary"
-                        className="w-full"
+                        className=""
                         onClick={handleClickNextPhoto}
                       >
                         Next Photo
@@ -372,7 +263,7 @@ const PostDetails = ({ style, tableStyle }) => {
                       <Button
                         variant="outlined"
                         color="primary"
-                        className="w-full"
+                        className=""
                         onClick={handleClickNextVideo}
                       >
                         Next Video
@@ -382,12 +273,12 @@ const PostDetails = ({ style, tableStyle }) => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  className="w-full bg-[#7b1fa2]"
+                  className="bg-[#7b1fa2] fixed my-12"
                   onClick={() => handleRemovePost(selectedPost.id)}
                 >
                   Remove Post
                 </Button>
-                <span className="flex justify-end">
+                <span className="flex justify-end ml-36 mt-12 fixed">
                   <Tooltip
                     title={`Reminder added on ${selectedPost.date}`}
                     arrow
@@ -400,21 +291,42 @@ const PostDetails = ({ style, tableStyle }) => {
                     </span>
                   </Tooltip>
                 </span>
-                <p>{selectedPost.content}</p>
-                <p>
-                  <strong>Likes:</strong> {selectedPost.likes}
-                </p>
-                <p>
-                  <strong>Comments:</strong> {selectedPost.comments.join(`\n`)}
-                </p>
+                <div className="mt-28">
+                  <p className="fixed">{selectedPost.content}</p>
+                  <p className="fixed mt-8">
+                    <strong>Likes:</strong> {selectedPost.likes}
+                  </p>
+                  <p className="pt-14 fixed">
+                    <strong className="">Comments:</strong>{" "}
+                  </p>
+                  <div className="pt-20 w-40 h-56">
+                    {selectedPost.comments.map((comment, index) => (
+                      <span key={index} className="flex flex-col overflow-auto">
+                        <Link
+                          href="/user/2"
+                          className="text-[10px] font-bold text-[#899999]"
+                        >
+                          {`${comment.userName}:`}
+                        </Link>
+                        <span>
+                          <span className="text-[13px] font-bold -mt-4">
+                            {` ${comment.comment} `}
+                          </span>
+                          <span className="text-[8px] font-extralight ml-[20%] text-black">
+                            {`${comment.date}`}
+                          </span>
+                          {index < selectedPost.comments.length - 1 ? "\n" : ""}
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Close
-          </Button>
+          <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </>
