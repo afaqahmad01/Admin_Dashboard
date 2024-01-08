@@ -252,7 +252,7 @@ const PostDetails = ({ style, tableStyle, imageURLs, onAddImage }) => {
                       <Button
                         variant="outlined"
                         color="primary"
-                        className=""
+                        className="fixed"
                         onClick={handleClickNextPhoto}
                       >
                         Next Photo
